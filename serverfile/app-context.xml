@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<description>Example configuration to get you started.</description>
+
+	<context:component-scan base-package="com.telkomsel.catalog"/>
+	<bean id="exampleBean" class="com.telkomsel.catalog.ExampleService">
+	</bean>
+
+	<bean id="managementTokenService" class="com.telkomsel.catalog.SigmaTokenService">
+		<property name="username" value="galihpri"/>
+		<property name="password" value="Atlas3detje"/>
+		<!--  
+		<property name="identityUrl" value="https://identity-uat.telkomsel.co.id/Issue/WebApi/?realm=https://management-uat.telkomsel.co.id&amp;tokentype=urn:oasis:names:tc:SAML:1.0:assertion"/>
+		-->
+		<property name="identityUrl" value="https://identity-uat.telkomsel.co.id/Issue/WebApi/?realm=https://management-uat.telkomsel.co.id&amp;tokentype=urn:oasis:names:tc:SAML:1.0:assertion"/>
+	</bean>
+
+	<bean id="catalogTokenService" class="com.telkomsel.catalog.SigmaTokenService">
+		<property name="username" value="galihpri"/>
+		<property name="password" value="Atlas3detje"/>
+		<!--  
+		<property name="identityUrl" value="https://identity-uat.telkomsel.co.id/Issue/WebApi/?realm=https://management-uat.telkomsel.co.id&amp;tokentype=urn:oasis:names:tc:SAML:1.0:assertion"/>
+		-->
+		<property name="identityUrl" value="https://identity-uat.telkomsel.co.id/Issue/WebApi/?realm=https://catalogapi-uat.telkomsel.co.id&amp;tokentype=urn:oasis:names:tc:SAML:1.0:assertion"/>
+	</bean>
+	
+	<bean id="instancesManagementService" class="com.telkomsel.catalog.SigmaInstanceManagementService">
+		<property name="managementUrl" value="https://management-uat.telkomsel.co.id/api/Instances"/>
+	</bean>
+<!--	
+	<bean id="sigmaAPIService" class="com.telkomsel.catalog.SigmaAPIService">
+		<property name="catalogUrl" value="https://catalogapi-uat.telkomsel.co.id/api/Fact"/>
+		<property name="instanceName" value="UAT_1.0"/>
+
+	</bean>
+-->
+
+	<bean id="sigmaAPIService" class="com.telkomsel.catalog.SigmaAPIService">
+		<property name="catalogUrl" value="https://catalogapi-uat.telkomsel.co.id/api/entity"/>
+		<property name="instanceName" value="UAT_1.0"/>
+
+	</bean>
+
+	<bean id="sigmaAPIStatusService" class="com.telkomsel.catalog.SigmaAPIStatusService">
+		<property name="catalogUrl" value="https://catalogapi-uat.telkomsel.co.id/api/status/?fromDatabase=true"/>
+		<property name="instanceName" value="UAT_1.0"/>
+
+	</bean>
+
+	<bean id="sigmaAPIServiceExport" class="com.telkomsel.catalog.SigmaAPIServiceExport">
+		<property name="catalogUrl" value="https://catalogapi-uat.telkomsel.co.id/api/entity/e9adf62c-a18f-49a6-a59c-5103c2353ea6"/>
+		<property name="instanceName" value="UAT_1.0"/>
+		<property name="dumpFile" value="C://Users//galihpri//Documents//RDP v2//RDP//data//Export_Prize_Zone.txt"/>
+
+	</bean>
+	<bean id="fileInput" class="com.telkomsel.catalog.FileReader">
+		<property name="filename" value="C://Users//galihpri//Documents//RDP v2//RDP//data//template.txt"/>
+
+	</bean>
+
+	<bean id="parameterInput" class="com.telkomsel.catalog.FileReader">
+		<property name="filename" value="C://Users//galihpri//Documents//RDP v2//RDP//data//data.txt"/>
+
+	</bean>
+	
+</beans>
